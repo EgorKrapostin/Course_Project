@@ -1,5 +1,4 @@
 package pro.sky.java.course1.courseproject;
-import java.util.Arrays;
 
 public class Main {
     static int counter = 0;
@@ -39,6 +38,21 @@ public class Main {
         System.out.println(" ");
         Employee.printEmployeesNames(employees);
         System.out.println(" ");
+        Employee.indexSalary(employees);
+        System.out.println(" ");
+        Employee.findMinSalaryInDepartment(employees,2);
+        System.out.println(" ");
+        Employee.findMaxSalaryInDepartment(employees,2);
+        System.out.println(" ");
+        Employee.salarySummInDepartment(employees, 2);
+        System.out.println(" ");
+        Employee.calcAvgSalaryInDepartment(employees,2);
+        System.out.println(" ");
+        Employee.indexSalaryInDepartment(employees,2,1.15F);
+        System.out.println(" ");
+        Employee.printAllEmployeesInDepartment(employees,2);
+        System.out.println(" ");
+        Employee.findSalaryLessThen(employees,55_500);
     }
 }
 

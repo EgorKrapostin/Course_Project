@@ -1,6 +1,7 @@
 package pro.sky.java.course1.courseproject;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Employee {
     private String name;
@@ -86,6 +87,90 @@ public class Employee {
         }
     }
 
+    public static void indexSalary(Employee[] employees) {
+        float index = 1.05F;
+        for (int i = 0; i <= employees.length - 1; i++) {
+            System.out.println("Зарплата проиндексирована. Текущая зарплата составляет: " + employees[i].getSalary() * index);
+        }
+    }
+
+    public static void findMinSalaryInDepartment(Employee[] employees, int department) {
+        int min = 1000000;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getDepartment() == department) {
+                if (employees[i].getSalary() < min) {
+                    min = employees[i].getSalary();
+                }
+            }
+        }
+        System.out.println("Минимальная зарплата в отделе " + department + " составляет: " + min);
+    }
+
+    public static void findMaxSalaryInDepartment(Employee[] employees, int department) {
+        int max = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getDepartment() == department) {
+                if (employees[i].getSalary() > max) {
+                    max = employees[i].getSalary();
+                }
+            }
+        }
+        System.out.println("Максимальная зарплата в отделе " + department + " составляет: " + max);
+    }
+
+    public static void salarySummInDepartment(Employee[] employees, int department) {
+        int summ = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getDepartment() == department) {
+                summ += employees[i].getSalary();
+            }
+        }
+        System.out.println("Суммарная зарплата в отделе " + department + " составляет " + summ);
+    }
+
+    public static void calcAvgSalaryInDepartment(Employee[] employees, int department) {
+        int counter = 0;
+        int summ = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getDepartment() == department) {
+                counter++;
+                summ += employees[i].getSalary();
+            }
+        }
+        int avgSalary = summ / counter;
+        System.out.println("Средняя зарплата в отедел " + department + " составляет: " + avgSalary);
+    }
+
+    public static void indexSalaryInDepartment(Employee[] employees, int department, float index) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getDepartment() == department) {
+                System.out.println("Зарплата в отеделе " + department + " проиндексирована. Текущая зарплата составляет: " + employees[i].getSalary() * index);
+            }
+        }
+    }
+
+    public static void printAllEmployeesInDepartment(Employee[] employees, int department) {
+        for (int i = 0; i <= employees.length - 1; i++) {
+            if (employees[i].getDepartment() == department) {
+                System.out.println("Сотрудник: " + employees[i].getName() + " Зарплата: " + employees[i].getSalary() + " ID: " + employees[i].getId());
+            }
+        }
+    }
+
+    public static void findSalaryLessThen(Employee[] employees, int salaryNum) {
+        for (int i = 0; i < employees.length ; i++) {
+            if (employees[i].getSalary() < salaryNum) {
+                System.out.println("Сотрудники с зарплатой меньше чем " + salaryNum);
+                System.out.println("Сотрудник: " + employees[i].getName() + " Зарплата: " + employees[i].getSalary() + " Отдел: " + employees[i].getDepartment() + " ID: " + employees[i].getId());
+                System.out.println(" ");
+            } else {
+                System.out.println(" ");
+                System.out.println("Сотрудники с зарплатой больше чем " + salaryNum);
+                System.out.println("Сотрудник: " + employees[i].getName() + " Зарплата: " + employees[i].getSalary() + " Отдел: " + employees[i].getDepartment() + " ID: " + employees[i].getId());
+            }
+        }
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -94,6 +179,19 @@ public class Employee {
                 ", salary=" + salary +
                 ", id=" + id +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return department == employee.department && salary == employee.salary && id == employee.id && name.equals(employee.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, department, salary, id);
     }
 }
 
