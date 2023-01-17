@@ -1,7 +1,6 @@
 package pro.sky.java.course1.courseproject;
 
 public class Main {
-    static int counter = 0;
 
     public static void main(String[] args) {
         Employee[] employees = new Employee[10];

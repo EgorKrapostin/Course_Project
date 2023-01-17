@@ -4,16 +4,17 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Employee {
+    static int counter = 0;
     private String name;
     private int department;
     private int salary;
-    private int id = Main.counter;
+    private int id = counter;
 
     public Employee(String name, int department, int salary) {
         this.name = name;
         this.department = department;
         this.salary = salary;
-        this.id = Main.counter++;
+        this.id = counter++;
     }
 
     public String getName() {
@@ -54,7 +55,7 @@ public class Employee {
     }
 
     public static void findMinSalary(Employee[] employees) {
-        int min = 1000000;
+        int min = Integer.MAX_VALUE;
         for (int i = 0; i <= employees.length - 1; i++) {
             if (employees[i].getSalary() < min) {
                 min = employees[i].getSalary();
@@ -95,7 +96,7 @@ public class Employee {
     }
 
     public static void findMinSalaryInDepartment(Employee[] employees, int department) {
-        int min = 1000000;
+        int min = Integer.MAX_VALUE;
         for (int i = 0; i < employees.length; i++) {
             if (employees[i].getDepartment() == department) {
                 if (employees[i].getSalary() < min) {
